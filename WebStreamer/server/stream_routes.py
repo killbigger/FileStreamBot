@@ -15,7 +15,7 @@ routes = web.RouteTableDef()
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
     return web.json_response({"status": "running",
-                              "maintained_by": "Avishkar_Patil",
+                              "maintained_by": "Sebin_Davis",
                               "uptime": get_readable_time(time.time() - StartTime),
                               "telegram_bot": '@'+(await StreamBot.get_me()).username})
 
@@ -28,14 +28,13 @@ async def stream_handler(request):
     except ValueError as e:
         logging.error(e)
         raise web.HTTPNotFound
-
-
+        
 async def media_streamer(request, message_id: int):
     range_header = request.headers.get('Range', 0)
     media_msg = await StreamBot.get_messages(Var.BIN_CHANNEL, message_id)
     file_properties = await TGCustomYield().generate_file_properties(media_msg)
     file_size = file_properties.file_size
-
+    print('Request from media streamer {},Message id is {}'.format(request.headers, message_id))
     if range_header:
         from_bytes, until_bytes = range_header.replace('bytes=', '').split('-')
         from_bytes = int(from_bytes)
