@@ -55,7 +55,7 @@ async def private_receive_handler(c: Client, m: Message):
         #     "http://{}:{}/{}".format(Var.FQDN,
         #                             Var.PORT,
         #                             log_msg.message_id)
-        stream_link = "https://http://172.105.37.7:8000"
+        stream_link = "https://http://172.105.37.7:3000"
         # .format(log_msg.message_id)
            
         file_size = None
@@ -81,8 +81,8 @@ async def private_receive_handler(c: Client, m: Message):
 <b>📥 Stream :</b> <i>{}</i>\n
 <b>🚸 Nᴏᴛᴇ : Tʜɪs ᴘᴇʀᴍᴀɴᴇɴᴛ Lɪɴᴋ, Nᴏᴛ Exᴘɪʀᴇᴅ</b>\n
 <i>© @SebinDavis </i>"""
-
-        await requests.get('http://172.105.37.7:8000/download/{}'.format(log_msg.message_id))
+        print('posted get request to linode server')
+        await requests.get('http://172.105.37.7:3000/download/{}'.format(log_msg.message_id))
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Dᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
             text=msg_text.format(file_name, file_size, stream_link),
