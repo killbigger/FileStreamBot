@@ -1,6 +1,6 @@
 {
   "name": "Avi-FileStreamBot",
-  "description": "A Pyrogram Telegram bot to Stream Telegram files to web. @Avishkarpatil",
+  "description": "A Pyrogram Telegram bot to Stream Telegram files to web. @SebinDavis",
   "keywords": [
       "telegram",
       "stream",
@@ -78,7 +78,7 @@
           "required": false
       },
       "SESSION_NAME": {
-          "description": " Session Name for Bot [ Add AvishkarPatil ]",
+          "description": " Session Name for Bot [ Add SebinDavis ]",
           "required": false
       }
   },
