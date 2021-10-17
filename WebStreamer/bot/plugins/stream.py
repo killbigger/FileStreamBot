@@ -51,11 +51,11 @@ async def private_receive_handler(c: Client, m: Message):
             return
     try:
         log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
-        # stream_link = "https://{}/{}".format(Var.FQDN, log_msg.message_id) if Var.ON_HEROKU or Var.NO_PORT else \
-        #     "http://{}:{}/{}".format(Var.FQDN,
-        #                             Var.PORT,
-        #                             log_msg.message_id)
-        stream_link = "https://http://172.105.37.7:3000"
+        stream_link = "https://{}/{}".format(Var.FQDN, log_msg.message_id) if Var.ON_HEROKU or Var.NO_PORT else \
+            "http://{}:{}/{}".format(Var.FQDN,
+                                    Var.PORT,
+                                    log_msg.message_id)
+        # stream_link = "https://http://172.105.37.7:3000"
         # .format(log_msg.message_id)
            
         file_size = None
