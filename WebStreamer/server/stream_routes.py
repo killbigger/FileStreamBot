@@ -46,6 +46,7 @@ async def media_streamer(request, message_id: int):
     req_length = until_bytes - from_bytes
 
     new_chunk_size = await chunk_size(req_length)
+    print('new_chunk_size {}'.format(new_chunk_size))
     offset = await offset_fix(from_bytes, new_chunk_size)
     first_part_cut = from_bytes - offset
     last_part_cut = (until_bytes % new_chunk_size) + 1
