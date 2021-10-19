@@ -38,7 +38,7 @@ async def media_streamer(request, message_id: int):
     if range_header:
         from_bytes, until_bytes = range_header.replace('bytes=', '').split('-')
         from_bytes = int(from_bytes)
-        until_bytes = int(until_bytes) if until_bytes else file_size - 1
+        until_bytes = int(until_bytes) if until_bytes else from_bytes+1048576
     else:
         from_bytes = request.http_range.start or 0
         until_bytes = request.http_range.stop or file_size - 1
