@@ -64,7 +64,8 @@ async def media_streamer(request, message_id: int):
         body=body,
         headers={
             "Content-Type": mime_type,
-            "Content-Range": f"bytes {from_bytes}-{until_bytes}",
+            "Content-Length": f"{chunk_size}",
+            "Content-Range": f"bytes {from_bytes}-{until_bytes}/{file_size}",
             "Content-Disposition": f'attachment; filename="{file_name}"',
             "Accept-Ranges": "bytes",
         }
